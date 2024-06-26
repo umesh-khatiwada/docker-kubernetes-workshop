@@ -1,60 +1,135 @@
-1. docker --version [OPTIONS] 
-2. docker pull [OPTIONS] NAME[: TAG|@DIGEST] 
-    example:  
-    docker pull dockerimage 
+## Docker Commands
 
-3 docker run [OPTIONS] IMAGE [COMMAND] [ARG...] 
-    example: 
-    docker run ubuntu:latest echo "Hello, World!"   
-    docker run ubuntu:latest /bin/bash -c 'echo $0 $1 $2' arg0 arg1 arg2
-    docker run -d --name my-ubuntu-container ubuntu sleep infinity
+This explains common Docker commands for managing images and containers.
 
-4. docker ps [OPTIONS]
-    example:
-    docker ps 
-    docker ps -a
+**1. Check Docker version:**
 
-5. docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
-    example:
-    docker exec -it ubuntu:latest echo "Hello, World!"
-    docker exec my-ubuntu-container ls -l /etc
-    docker exec -it my-ubuntu-container /bin/bash
+```
+docker version
+```
 
+**2. Pull an image:**
 
-6. docker stop [OPTIONS] CONTAINER [CONTAINER...]
-    docker stop  my-ubuntu-container
+```
+docker pull ubuntu:latest  # Pulls the latest Ubuntu image
+```
 
-7. docker restart my_container 
-   docker restart my-ubuntu-container
+**3. Run a container:**
 
-8. docker kill [OPTIONS] CONTAINER [CONTAINER...]
-   example 
-   docker kill my-ubuntu-container
+* Basic run:
 
-9. docker kill [OPTIONS] CONTAINER [CONTAINER...]
-   docker kill my_container
+```
+docker run ubuntu:latest echo "Hello, World!"  # Runs the echo command
+```
 
-10. docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]
-    details: Docker commit command allows users to take an existing running container and save its current state as an image 
-    docker commit c3f279d17e0a dev/testimage:version3.
+* Detached mode (background):
 
-11. docker push
-    syntax: docker push [OPTIONS] NAME[: TAG] 
-    example:
-            docker push myusername/myrepository:latest 
+```
+docker run -d --name my-ubuntu-container ubuntu sleep infinity  # Runs in background
+```
 
-11. docker rm 
-    syntax: docker rm [container1]
-            docker rm container1 container2 container3 
+* Interactive session:
 
-12. docker rmi
-    docker rmi [OPTIONS] IMAGE
-    exmaple : docker rmi my_image:tag 
-              docker rmi image1:tag image2:tag image3:tag 
+```
+docker run -it ubuntu:latest /bin/bash  # Opens a bash shell in the container
+```
 
-14. docker login
-    Command: docker login -u myusername -p mypassword 
+**4. List containers:**
 
-15. docker start
-    docker start [OPTIONS] CONTAINER [CONTAINER...] 
-    
+* Running containers:
+
+```
+docker ps
+```
+
+* All containers (running and stopped):
+
+```
+docker ps -a
+```
+
+**5. Run a command inside a container:**
+
+* Simple command:
+
+```
+docker exec ubuntu:latest echo "Hello again!"
+```
+
+* Interactive shell:
+
+```
+docker exec -it my-ubuntu-container /bin/bash
+```
+
+**6. Stop a container:**
+
+```
+docker stop my-ubuntu-container
+```
+
+**7. Restart a container:**
+
+```
+docker restart my-ubuntu-container
+```
+
+**8. Forcefully terminate a container:**
+
+```
+docker kill my-ubuntu-container
+```
+
+**9. Create a new image from a container:**
+
+```
+docker commit c3f279d17e0a dev/testimage:version3  # Creates an image from container c3f279d17e0a
+```
+
+**10. Push an image to a registry (private requires login):**
+
+```
+docker push myusername/myrepository:latest
+```
+
+**11. Remove stopped containers:**
+
+* Single container:
+
+```
+docker rm container1
+```
+
+* Multiple containers:
+
+```
+docker rm container1 container2 container3
+```
+
+**12. Remove images:**
+
+* Single image:
+
+```
+docker rmi my_image:tag
+```
+
+* Multiple images:
+
+```
+docker rmi image1:tag image2:tag image3:tag
+```
+
+**13. Login to a registry (private only):**
+
+```
+docker login -u myusername -p mypassword
+```
+
+**14. Start a stopped container:**
+
+```
+docker start my-stopped-container
+```
+
+This is a basic overview. Refer to Docker documentation for advanced usage and details.

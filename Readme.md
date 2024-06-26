@@ -1,3 +1,4 @@
-Docker & Kubernetes Docs file
+Docker & Kubernetes Reference File
 
-https://www.knowledgehut.com/blog/devops/basic-docker-commands
+Reference:
+1.[Docker basic command](https://www.knowledgehut.com/blog/devops/basic-docker-commands)
