@@ -41,3 +41,6 @@ This guide walks you through installing Helm and using it to deploy a PostgreSQL
    - The `--version 15.5.10` flag specifies the desired PostgreSQL version.
 
 This guide provides a basic example of deploying PostgreSQL with Helm. The Bitnami PostgreSQL chart offers various customization options through values files. Refer to the Bitnami documentation for further details on configuring the deployment.
+
+## helm upgrade
+ helm upgrade  my-traefik traefik-28.3.0.tgz -f value.yaml -n default 
